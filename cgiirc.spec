@@ -19,7 +19,6 @@ Requires(postun):	rpm-helper >= 0.16-2mdv2007.0
 BuildRequires:	rpm-helper >= 0.16-2mdv2007.0
 BuildRequires:	rpm-mandriva-setup >= 1.23-1mdv2007.0
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}
 
 %description
 CGI:IRC is a Perl/CGI program that lets you access IRC from a web browser, it
