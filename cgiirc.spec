@@ -1,6 +1,6 @@
 %define name    cgiirc
 %define version 0.5.9
-%define release %mkrel 6
+%define release %mkrel 7
 
 Name:           %{name}
 Version:        %{version}
@@ -12,12 +12,11 @@ URL:            http://cgiirc.sourceforge.net
 Source:		http://prdownloads.sourceforge.net/cgiirc/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-0.5.8.fhs.patch
 Patch1:		%{name}-0.5.7.config.patch
-Requires:	apache
-# webapp macros and scriptlets
-Requires(post):		rpm-helper >= 0.16-2mdv2007.0
-Requires(postun):	rpm-helper >= 0.16-2mdv2007.0
-BuildRequires:	rpm-helper >= 0.16-2mdv2007.0
-BuildRequires:	rpm-mandriva-setup >= 1.23-1mdv2007.0
+Requires:	webserver
+%if %mdkversion < 201010
+Requires(post):   rpm-helper
+Requires(postun):   rpm-helper
+%endif
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}
 
@@ -55,7 +54,9 @@ cat > %{buildroot}%{_webappconfdir}/%{name}.conf <<EOF
 # CGI::IRC configuration
 
 Alias /%{name} %{_var}/www/%{name}
+  
 <Directory %{_var}/www/%{name}>
+    Order allow,deny
     Allow from all
 </Directory>
 EOF
@@ -64,10 +65,14 @@ EOF
 rm -rf %{buildroot}
 
 %post
+%if %mdkversion < 201010
 %_post_webapp
+%endif
 
 %postun
+%if %mdkversion < 201010
 %_postun_webapp
+%endif
 
 %files
 %defattr(-,root,root)
