@@ -1,6 +1,6 @@
 %define name    cgiirc
 %define version 0.5.9
-%define release %mkrel 7
+%define release %mkrel 8
 
 Name:           %{name}
 Version:        %{version}
