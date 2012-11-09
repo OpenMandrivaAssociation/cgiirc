@@ -1,0 +1,63 @@
+diff -Naur cgiirc-0.5.8/client-perl.cgi cgiirc-0.5.8.fhs/client-perl.cgi
+--- cgiirc-0.5.8/client-perl.cgi	2006-04-30 18:09:28.000000000 +0200
++++ cgiirc-0.5.8.fhs/client-perl.cgi	2006-05-05 11:23:56.000000000 +0200
+@@ -18,7 +18,7 @@
+ # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ 
+ use strict;
+-use lib qw/modules/;
++use lib qw(/usr/share/cgiirc/modules);
+ use vars qw($VERSION $PREFIX);
+ 
+ # change this if needed
+diff -Naur cgiirc-0.5.8/irc.cgi cgiirc-0.5.8.fhs/irc.cgi
+--- cgiirc-0.5.8/irc.cgi	2006-04-30 20:03:50.000000000 +0200
++++ cgiirc-0.5.8.fhs/irc.cgi	2006-05-05 11:25:18.000000000 +0200
+@@ -22,7 +22,7 @@
+ 
+ use strict;
+ use vars qw($VERSION $config $config_path);
+-use lib qw/modules interfaces/;
++use lib qw(/usr/share/cgiirc/modules /usr/share/cgiirc/interfaces);
+ no warnings 'uninitialized';
+ 
+ ($VERSION =
+@@ -103,7 +103,7 @@
+             ? $cgi->{Format} 
+             : $config->{format} || 'default';
+    $format =~ s/[^a-z]//gi;
+-   $format = parse_config($config_path . "formats/$format");
++   $format = parse_config("/usr/share/cgiirc/formats/$format");
+    $style = exists $format->{style} ? $format->{style} : 'default';
+ 
+    $out .= "R=$r";
+diff -Naur cgiirc-0.5.8/nph-irc.cgi cgiirc-0.5.8.fhs/nph-irc.cgi
+--- cgiirc-0.5.8/nph-irc.cgi	2006-04-30 21:08:55.000000000 +0200
++++ cgiirc-0.5.8.fhs/nph-irc.cgi	2006-05-05 11:23:56.000000000 +0200
+@@ -22,7 +22,7 @@
+ 
+ require 5.004;
+ use strict;
+-use lib qw{./modules ./interfaces};
++use lib qw(/usr/share/cgiirc/modules /usr/share/cgiirc/interfaces);
+ use vars qw(
+       $VERSION @handles %inbuffer $select_bits @output
+       $unixfh $ircfh $cookie $ctcptime $intime $pingtime
+@@ -274,7 +274,7 @@
+    if($cgi->{format} && $cgi->{format} !~ /[^A-Za-z0-9]/) {
+       $formatname = $cgi->{format};
+    }
+-   return parse_config($config_path . 'formats/' . $formatname);
++   return parse_config('/usr/share/cgiirc/formats/' . $formatname);
+ }
+ 
+ ## Prints a nicely formatted line
+@@ -472,7 +472,7 @@
+ sub load_interface {
+    my $name = defined $cgi->{interface} ? $cgi->{interface} : 'default';
+    ($name) = $name =~ /([a-z0-9]+)/i;
+-   require("./interfaces/$name.pm");
++   require("$name.pm");
+ 
+    $ioptions = parse_interface_cookie();
+    for(keys %$config) {

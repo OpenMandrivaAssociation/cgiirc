@@ -1,0 +1,11 @@
+--- cgiirc.config.full~	2005-06-19 20:38:53.000000000 +0200
++++ cgiirc.config.full	2005-09-12 17:18:18.000000000 +0200
+@@ -42,7 +42,7 @@
+ # In script aliased directories (cgi-bin) the default will *not* work,
+ # you need to move the directory elsewhere and change this to something
+ # like /images.
+-image_path = images
++image_path = /cgiirc
+ 
+ # The charset to send to IRC, to send anything other than UTF-8 you will
+ # need the Encode perl module installed.
