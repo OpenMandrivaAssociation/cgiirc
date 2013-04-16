@@ -1,10 +1,6 @@
-%define name    cgiirc
-%define version 0.5.9
-%define release: 10
-
-Name:           %{name}
-Version:        %{version}
-Release:        %{release}
+Name:           cgiirc
+Version:        0.5.9
+Release:        10
 Summary:        IRC gateway 
 License:        Artistic and GPL
 Group:		Networking/WWW
@@ -13,12 +9,7 @@ Source:		http://prdownloads.sourceforge.net/cgiirc/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-0.5.8.fhs.patch
 Patch1:		%{name}-0.5.7.config.patch
 Requires:	webserver
-%if %mdkversion < 201010
-Requires(post):   rpm-helper
-Requires(postun):   rpm-helper
-%endif
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}
 
 %description
 CGI:IRC is a Perl/CGI program that lets you access IRC from a web browser, it
