@@ -1,6 +1,6 @@
 %define name    cgiirc
 %define version 0.5.9
-%define release %mkrel 8
+%define release: 9
 
 Name:           %{name}
 Version:        %{version}
@@ -64,15 +64,7 @@ EOF
 %clean
 rm -rf %{buildroot}
 
-%post
-%if %mdkversion < 201010
-%_post_webapp
-%endif
 
-%postun
-%if %mdkversion < 201010
-%_postun_webapp
-%endif
 
 %files
 %defattr(-,root,root)
