@@ -1,6 +1,6 @@
 %define name    cgiirc
 %define version 0.5.9
-%define release: 9
+%define release: 10
 
 Name:           %{name}
 Version:        %{version}
