@@ -1,6 +1,6 @@
 Name:           cgiirc
 Version:        0.5.9
-Release:        10
+Release:        11
 Summary:        IRC gateway 
 License:        Artistic and GPL
 Group:		Networking/WWW
