@@ -4,7 +4,7 @@ Release:        12
 Summary:        IRC gateway 
 License:        Artistic and GPL
 Group:		Networking/WWW
-URL:            http://cgiirc.sourceforge.net
+URL:            https://cgiirc.sourceforge.net
 Source:		http://prdownloads.sourceforge.net/cgiirc/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-0.5.8.fhs.patch
 Patch1:		%{name}-0.5.7.config.patch
